@@ -40,7 +40,7 @@ class CountdownTimer {
       hoursRef: document.querySelector(`${this.selector} [data-value="hours"]`),
       minutesRef: document.querySelector(`${this.selector} [data-value="minutes"]`),
       secondsRef: document.querySelector(`${this.selector} [data-value="seconds"]`)
-    };
+  };
   }
 
   getData() {
@@ -75,8 +75,7 @@ class CountdownTimer {
   }
 
   startTimer() {
-    
-    this.countDownId = setInterval(() => {
+        this.countDownId = setInterval(() => {
         const timer = this.getData(); // отримуємо обʼєкт { days, hours, minutes, seconds }
         this.updateContent(timer); // передаємо цей обʼєкт в метод оновлення DOM. Де він одразу деструкутурується.// в колбеку викликаємо метод этого же класса
     }, 1000);
@@ -85,6 +84,12 @@ class CountdownTimer {
     clearInterval(this.countDownId);
   }
 }
+
+const startBtn = document.querySelector('#startCount');
+startBtn.addEventListener('click', e => {
+  timer.startTimer();
+});
+
 const stopBtn = document.querySelector('#stopCountDown');
 stopBtn.addEventListener('click', e => {
   timer.stopTimer();
@@ -96,4 +101,4 @@ const timer = new CountdownTimer({
 });
 //обявили экз.класса и передали данные 
 
-timer.startTimer(); //вызвал у него метод startTimer
+// timer.startTimer(); //вызвал у него метод startTimer
